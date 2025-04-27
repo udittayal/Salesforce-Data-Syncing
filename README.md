@@ -1,18 +1,19 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Data Syncing between two Orgs
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## I have used the concepts of Platform Events to Bulkify DML Events performed in Base Org
 
-## How Do You Plan to Deploy Your Changes?
+## Approach
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+1. Once a record is created in Base Org, an External Id field will be updated from record Id and will be passed in the Target Org
+2. By passing External Id we can easily update the records in Target Org
+3. Once a Trigger is executed, a list of platform events are published and relevant information like Object name, Record Id, Fields Changed is passed.
+4. I have used the generic methods such that same logic can be used in multiple objects after doing some pre-requisite activities
+5. Platform event subscribers queries the data and prepare composite graph body and dynamically create graphs based on the number of records to be created/updated/deleted
+6. With the following apporach, one can setup data syncing within a short span of time.
 
-## Configure Your Salesforce DX Project
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Future works and Current Challenges
 
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+1. Creation of child record along with lookup value of the parent.
+2. API Logger to store the logs
+3. Retry logic for the failed records.
