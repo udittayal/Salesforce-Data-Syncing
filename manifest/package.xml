@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>DataSyncEventHandler</members>
+		<members>DataSyncingTriggerHandler</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>Account.External_Id__c</members>
+		<members>Data_Sync_Event__e.Event_Type__c</members>
+		<members>Data_Sync_Event__e.Fields_Changed__c</members>
+		<members>Data_Sync_Event__e.Object_Name__c</members>
+		<members>Data_Sync_Event__e.Record_Id__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>Data_Sync_Event__e</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>DataSyncConfig</members>
+		<name>PlatformEventSubscriberConfig</name>
+	</types>
+	<version>63.0</version>
+</Package>
